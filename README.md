@@ -35,4 +35,4 @@ app/
         light.scss                            | **new**
 ```
 
-2. **Compile the theme assets and restart.** Run `RAILS_ENV=production bundle exec rails assets:precompile` and restart your Glitch-soc instance for the changes to take effect.
+2. **Compile the theme assets and restart.** Run `RAILS_ENV=production bundle exec rails assets:precompile` and reload mastodon-web for the changes to take effect.
