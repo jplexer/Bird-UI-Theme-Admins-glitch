@@ -29,8 +29,10 @@ app/
       fonts/
         ...
       elephant/                               | **new**
+        contrast.scss                         | **new**
         layout-multiple-columns.scss          | **new**
         layout-single-column.scss             | **new**
+        light.scss                            | **new**
 ```
 
 2. **Compile the theme assets and restart.** Run `RAILS_ENV=production bundle exec rails assets:precompile` and restart your Glitch-soc instance for the changes to take effect.
