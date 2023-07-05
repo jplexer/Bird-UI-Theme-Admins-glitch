@@ -3,8 +3,9 @@
 To add the [Bird UI theme](https://github.com/ronilaukkarinen/mastodon-bird-ui) to your Glitch-soc instance follow these steps!
 (Please note that this only support the "vanilla" flavour as of now)
 
+1. Clone the git repository using `git clone --recurse-submodules https://github.com/jplexer/Bird-UI-Theme-Admins-glitch.git`
 
-1. Add the files from the repos "mastodon" folder into the folder of your Glitch-soc Install:
+2. Add the files from the repos "mastodon" folder into the folder of your Glitch-soc Install:
 
 ```
 app/
@@ -35,4 +36,7 @@ app/
         light.scss                            | **new**
 ```
 
-2. **Compile the theme assets and restart.** Run `RAILS_ENV=production bundle exec rails assets:precompile` and reload mastodon-web for the changes to take effect.
+3. **Compile the theme assets and restart.** Run `RAILS_ENV=production bundle exec rails assets:precompile` and reload mastodon-web for the changes to take effect.
+
+
+If you want to update the Theme run `git pull --recurse-submodules` in the folder and follow steps 2 and 3 again
