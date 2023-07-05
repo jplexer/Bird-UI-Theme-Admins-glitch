@@ -1,6 +1,6 @@
 @import 'flavours/glitch/styles/index';
-@import './layout-single-column';
-@import './layout-multiple-columns';
+@import 'skins/vanilla/bird-ui/layout-single-column';
+@import 'skins/vanilla/bird-ui/layout-multiple-columns';
 
 .layout-single-column .status .status__info .status__info__account {
     align-items: flex-start;
