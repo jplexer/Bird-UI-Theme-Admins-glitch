@@ -21,3 +21,22 @@
 .layout-single-column .notification.notification-admin-sign-up .display-name__account {
     padding-left: calc(var(--size-avatar) + var(--gap-default));
 }
+
+.account__avatar[style="width: 48px; height: 48px;"],
+.layout-single-column .status__avatar {
+  /* Need to override inline styles */
+  /* stylelint-disable-next-line */
+  height: var(--size-avatar) !important;
+  /* stylelint-disable-next-line */
+  max-height: var(--size-avatar) !important;
+  /* stylelint-disable-next-line */
+  max-width: var(--size-avatar) !important;
+  /* stylelint-disable-next-line */
+  min-height: var(--size-avatar) !important;
+  /* stylelint-disable-next-line */
+  min-width: var(--size-avatar) !important;
+
+  /* Need to override inline styles */
+  /* stylelint-disable-next-line */
+  width: var(--size-avatar) !important;
+}
