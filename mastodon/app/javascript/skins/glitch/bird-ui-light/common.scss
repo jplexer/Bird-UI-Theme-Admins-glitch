@@ -1,6 +1,4 @@
-@import 'styles/mastodon-light/variables';
-@import 'styles/application';
-@import 'styles/mastodon-light/diff';
+@import 'flavours/glitch/styles/mastodon-light';
 @import '../bird-ui/layout-single-column';
 @import '../bird-ui/layout-multiple-columns';
 @import 'light.scss';

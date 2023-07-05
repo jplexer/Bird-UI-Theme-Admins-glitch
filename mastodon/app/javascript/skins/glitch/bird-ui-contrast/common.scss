@@ -1,6 +1,4 @@
-@import 'styles/contrast/variables';
-@import 'styles/application';
-@import 'styles/contrast/diff';
+@import 'flavours/glitch/styles/contrast';
 @import '../bird-ui/layout-single-column';
 @import '../bird-ui/layout-multiple-columns';
 @import 'contrast.scss';
