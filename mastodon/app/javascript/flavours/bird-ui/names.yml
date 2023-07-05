@@ -1,0 +1,8 @@
+en:
+  flavours:
+    vanilla:
+      description: A theme that is designed to represent a Birdy site. This theme might not support all of the features of GlitchSoc.
+      name: Bird UI
+  skins:
+    vanilla:
+      default: Default
