@@ -1,3 +1,23 @@
 @import 'flavours/glitch/styles/index';
 @import './layout-single-column';
-@import './layout-multiple-columns.css';
+@import './layout-multiple-columns';
+
+.layout-single-column .status .status__info .status__info__account {
+    align-items: flex-start;
+}
+  
+.layout-single-column .status .status__info .status__info__icons {
+    margin-left: auto;
+}
+
+.layout-single-column .column > .scrollable {
+    background-color: transparent !important;
+}
+  
+.layout-single-column .status__content {
+    margin-top: auto;
+}
+  
+.layout-single-column .notification.notification-admin-sign-up .display-name__account {
+    padding-left: calc(var(--size-avatar) + var(--gap-default));
+}
