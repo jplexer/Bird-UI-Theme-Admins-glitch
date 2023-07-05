@@ -1,0 +1,4 @@
+[submodule "mastodon/app/javascript/skins/vanilla/bird-ui/mastodon-bird-ui-submodule"]
+	path = mastodon/app/javascript/skins/vanilla/bird-ui/mastodon-bird-ui-submodule
+	url = https://github.com/jplexer/mastodon-bird-ui-submodule.git
+	branch = mastodon-4.1.2-nightly
