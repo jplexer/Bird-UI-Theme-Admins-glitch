@@ -1,5 +1,5 @@
 /* Mastodon Bird UI by @rolle@mementomori.social
-   1.5.8rc4-nightly-mastodon-4.1.2-nightly */
+   1.5.8rc6-nightly-mastodon-4.1.2-nightly */
 
 /* CSS variables */
 :root {
@@ -573,6 +573,12 @@ a.status-card.compact .status-card__host {
   color: var(--color-bg);
 }
 
+/* Content warning placeholder */
+.layout-single-column .compose-form .autosuggest-textarea__textarea::placeholder,
+.layout-single-column .compose-form .spoiler-input__input::placeholder {
+  color: var(--color-dim);
+}
+
 /* Border colors */
 .layout-single-column .account__header__bar,
 .layout-single-column .about__meta__divider,
@@ -1055,6 +1061,7 @@ body.embed .detailed-status,
 .layout-single-column .account-card__title__avatar img,
 .layout-single-column .account__avatar > img,
 .layout-single-column .column > .scrollable .status__avatar img {
+  background-color: var(--color-bg);
   border: 0;
   border-radius: 50%;
   box-shadow: rgb(255 255 255 / 0.03) 0 0 2px inset;
@@ -1979,6 +1986,7 @@ body.embed .button.logo-button,
 .layout-single-column .column-inline-form button,
 .layout-single-column .explore__suggestions .account-card__actions__button button,
 .layout-single-column .account__header__tabs__buttons .button,
+.layout-single-column .account .account__relationship > .button,
 .layout-single-column .notification .account__relationship > .button {
   background-color: transparent;
   border-bottom-left-radius: 9999px;
@@ -1999,7 +2007,8 @@ body.embed .button.logo-button,
 .layout-single-column .explore__suggestions .account-card__actions__button button,
 .layout-single-column .account__header__tabs__buttons .button,
 .layout-single-column .account__header__tabs__buttons .icon-button,
-.layout-single-column .notification .account__relationship > .button {
+.layout-single-column .notification .account__relationship > .button,
+.layout-single-column .account .account__relationship > .button {
   border: 1px solid var(--color-outer-space);
 }
 
@@ -2048,7 +2057,9 @@ body.embed .button.logo-button:hover,
 .layout-single-column .account__header__tabs__buttons .button:focus,
 .layout-single-column .account__header__tabs__buttons .button:hover,
 .layout-single-column .notification .account__relationship > .button:hover,
-.layout-single-column .notification .account__relationship > .button:focus {
+.layout-single-column .notification .account__relationship > .button:focus,
+.layout-single-column .account .account__relationship > .button:hover,
+.layout-single-column .account .account__relationship > .button:focus {
   background-color: var(--color-profile-button-hover);
 }
 
@@ -3012,10 +3023,6 @@ body.embed .button.logo-button:hover,
     order: 8;
   }
 
-  .layout-single-column .navigation-panel .column-link:nth-child(9) {
-    order: 9;
-  }
-
   /* Lists */
   .layout-single-column .column-link[href="/lists"] {
     order: 4;
@@ -3060,22 +3067,6 @@ body.embed .button.logo-button:hover,
   border-radius: 16px;
   outline: 1px solid var(--color-border);
   overflow: hidden;
-}
-
-/* Make border shown */
-.layout-single-column .audio-player,
-.layout-single-column .video-player,
-.layout-single-column .media-gallery__item {
-  overflow: visible;
-}
-
-.layout-single-column .media-gallery__item-thumbnail:has(> img:not([alt])):focus::after,
-.layout-single-column .video-player:has(> video:not([title])):focus::after,
-.layout-single-column .media-gallery__gifv:has(> video:not([title])):focus::after,
-.layout-single-column .media-gallery__item-thumbnail:has(> img:not([alt])):hover::after,
-.layout-single-column .video-player:has(> video:not([title])):hover::after,
-.layout-single-column .media-gallery__gifv:has(> video:not([title])):hover::after {
-  background-color: var(--color-red);
 }
 
 /* More distinct focus color for accessibility, instead of just white */
@@ -3144,9 +3135,26 @@ body.embed .entry .detailed-status {
   height: calc(100% + 32px);
 }
 
-div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.status--in-thread > .status__line.status__line--full,
+/* Default lines when replying in real time */
+.layout-single-column div[tabindex="-1"]:has(.status--in-thread) .status--in-thread:not(.status--first-in-thread) > .status__line:not(.status__line--full) {
+  height: 0;
+}
+
+/* Hide line before first in thread */
+.layout-single-column div[tabindex="-1"]:has(.status--in-thread) + div[tabindex="-1"] > .status--in-thread.status--first-in-thread > .status__line:not(.status__line--full),
+.layout-single-column div[tabindex="-1"]:has(.detailed-status__wrapper) + div[tabindex="-1"] > .status__wrapper .status__line:not(.status__line--full) {
+  height: 0;
+}
+
+.layout-single-column div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.status--in-thread > .status__line.status__line--full,
 .layout-single-column .status__line--full.status__line--first {
   height: 100%;
+  z-index: -1;
+}
+
+.layout-single-column .detailed-status {
+  background-color: transparent;
+  border-top: 0;
 }
 
 /* Threaded line, actually */
@@ -3159,11 +3167,6 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
   background-color: var(--color-thread-line);
 }
 
-/* Hide border-top from the last in thread */
-.layout-single-column div:has(.status--in-thread) + div .detailed-status {
-  border-top: 0;
-}
-
 /* Hide the "stub" from the first status line */
 div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.status--in-thread > .status__line.status__line--full,
 .layout-single-column .status-reply.status--in-thread.status--first-in-thread > .status__line,
@@ -3171,14 +3174,8 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
   top: 32px;
 }
 
-.layout-single-column .status--in-thread .attachment-list,
-.layout-single-column .status--in-thread .audio-player,
-.layout-single-column .status--in-thread .media-gallery,
-.layout-single-column .status--in-thread .picture-in-picture-placeholder,
-.layout-single-column .status--in-thread .status-card,
 .layout-single-column .status--in-thread .status__action-bar,
-.layout-single-column .status--in-thread .status__content,
-.layout-single-column .status--in-thread .video-player {
+.layout-single-column .status--in-thread .status__content {
   padding-left: 4px;
 }
 
