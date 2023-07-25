@@ -1,5 +1,5 @@
 /* Mastodon Bird UI by @rolle@mementomori.social
-   1.5.8rc7-nightly-mastodon-4.1.2-nightly */
+   1.6.6-nightly */
 
 /* CSS variables */
 :root {
@@ -29,6 +29,7 @@
   --color-dim: var(--color-brand-mastodon-dim);
   --color-accent: var(--color-brand-mastodon-links);
   --color-accent-dark: var(--color-brand-mastodon);
+  --color-accent-dark-50: #595aff80;
   --color-green: #00ba7c;
   --color-red: #f91880;
   --color-red-75: #f91880bf;
@@ -51,6 +52,10 @@
   --color-ghost-button-text: var(--color-button-text);
   --color-verified: #79bd9a;
   --color-destructive: #df405a;
+  --color-light-fuchsia-pink: #ff8cfd;
+  --color-hashtag: var(--color-accent);
+  --color-mention: var(--color-accent);
+  --color-link: var(--color-accent);
 
   /* In the original UI this color is lighten($ui-base-color, 12%) */
   --color-outer-space: #42485a;
@@ -59,10 +64,13 @@
   --font-stack: system-ui, -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, Inter, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-size: 15px;
   --font-size-smaller: 13px;
+  --font-size-12: 12px;
   --font-size-mid: 14px;
   --font-size-bigger: 17px;
   --font-size-heading: 20px;
   --font-weight-bold: 700;
+  --line-height: 22px;
+  --line-height-mid: 20px;
 
   /* Grids and gaps */
   --gap-default: 12px;
@@ -82,6 +90,9 @@
   --active-header-box-shadow: 0 1px 0 rgba(140, 141, 255, .3);
   --active-header-radial-gradient: radial-gradient(ellipse, rgba(99, 100, 255, .23) 0, rgba(99, 100, 255, 0) 60%);
   --compose-form-linear-gradient: linear-gradient(180deg, rgba(30, 32, 40, 1) 0%, rgba(30, 32, 40, 1) 53%, rgba(30, 32, 40, 0.8141631652661064) 76%, rgba(30, 32, 40, 0.7077205882352942) 87%, rgba(30, 32, 40, 0.458420868347339) 97%, rgba(30, 32, 40, 0) 100%);
+
+  /* Logo */
+  --logo: url('data:image/svg+xml, %3Csvg class="mastodon-logo" xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 216.4144 232.00976"%3E%3Cdefs xmlns="http://www.w3.org/2000/svg"%3E%3ClinearGradient xmlns="http://www.w3.org/2000/svg" id="gradient" x2="0%25" y2="100%25" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0%25" stop-color="%23595aff"%3E%3C/stop%3E%3Cstop offset="100%25" stop-color="%23595aff"%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath xmlns="http://www.w3.org/2000/svg" d="M211.80734 139.0875c-3.18125 16.36625-28.4925 34.2775-57.5625 37.74875-15.15875 1.80875-30.08375 3.47125-45.99875 2.74125-26.0275-1.1925-46.565-6.2125-46.565-6.2125 0 2.53375.15625 4.94625.46875 7.2025 3.38375 25.68625 25.47 27.225 46.39125 27.9425 21.11625.7225 39.91875-5.20625 39.91875-5.20625l.8675 19.09s-14.77 7.93125-41.08125 9.39c-14.50875.7975-32.52375-.365-53.50625-5.91875C9.23234 213.82 1.40609 165.31125.20859 116.09125c-.365-14.61375-.14-28.39375-.14-39.91875 0-50.33 32.97625-65.0825 32.97625-65.0825C49.67234 3.45375 78.20359.2425 107.86484 0h.72875c29.66125.2425 58.21125 3.45375 74.8375 11.09 0 0 32.975 14.7525 32.975 65.0825 0 0 .41375 37.13375-4.59875 62.915" fill="url(%23gradient)"%3E%3C/path%3E%3Cpath d="M177.50984 80.077v60.94125h-24.14375v-59.15c0-12.46875-5.24625-18.7975-15.74-18.7975-11.6025 0-17.4175 7.5075-17.4175 22.3525v32.37625H96.20734V85.42325c0-14.845-5.81625-22.3525-17.41875-22.3525-10.49375 0-15.74 6.32875-15.74 18.7975v59.15H38.90484V80.077c0-12.455 3.17125-22.3525 9.54125-29.675 6.56875-7.3225 15.17125-11.07625 25.85-11.07625 12.355 0 21.71125 4.74875 27.8975 14.2475l6.01375 10.08125 6.015-10.08125c6.185-9.49875 15.54125-14.2475 27.8975-14.2475 10.6775 0 19.28 3.75375 25.85 11.07625 6.36875 7.3225 9.54 17.22 9.54 29.675" fill="%23fff"%3E%3C/path%3E%3C/svg%3E');
 
   /* Icons */
   --icon-follow-hashtag: url('data:image/svg+xml, %3Csvg version="1.0" xmlns="http://www.w3.org/2000/svg" width="18px" height="auto" viewBox="0 0 462 439"%3E%3Cpath fill="%23717c9b" d="M139 11.7c-3.5 2.5-6.2 5.4-7.7 8.3-2.5 4.8-2.5 5.2-7.8 52.5-1.4 12.6-3.5 31.4-4.7 41.7l-2.1 18.7-48.6.3-48.6.3-5 3.1C7.2 141.1 3 148.4 3 156.7c0 4.4.6 7.6 2 10.2 2.7 5.4 10.1 11.6 15.5 13 2.9.7 19.2 1.1 47.8 1.1 40.9 0 43.5.1 43.1 1.7-.4 1.9-8.4 73.2-8.4 75.2 0 .8-11.4 1.1-41 1.1H20.9l-4.8 2.5C7.5 265.8 3 273 3 282.5s4.5 16.7 13.1 21l4.8 2.5H97.6l-5.3 46.7c-2.9 25.8-5.4 50.3-5.5 54.5-.1 7 .2 8.2 2.8 12.5 1.7 2.7 5.1 6.2 7.8 8 4.5 3.1 5.4 3.3 13 3.3 8.9 0 10.2-.5 16.8-6.8 4.8-4.6 6.3-9.3 8.2-26.7.9-7.7 2.7-23.9 4-36 1.4-12.1 3.3-29.5 4.3-38.8l1.7-16.7H214.7l.5-8.3c.7-9.8 1.4-11.5 8.2-18.5 8.6-9 7-8.7 41.4-9l30.2-.3V259h-9.5c-9.4 0-9.5 0-9.1-2.3.3-1.2 1.5-10.8 2.6-21.2 1.2-10.5 3-26.5 4.1-35.7 1-9.2 1.9-17.2 1.9-17.8 0-.7 12.3-1 38.5-1 23.5 0 40.3-.4 43.4-1.1 6.1-1.3 13.5-7.4 16.2-13.4 5.2-11.4.2-24.9-11.5-30.9l-4.9-2.6H290.4l5.3-46.8c5.3-47.1 6.1-59 4.3-63.6-1.4-3.7-7.9-10.5-12.1-12.7C285.2 8.6 282 8 277.2 8c-6.2 0-7.5.4-11.8 3.2-9.2 6.2-10.1 8.6-12.9 31.8-3.4 28.9-7.2 63.4-8.7 77.7l-1.2 12.3h-77.8l.6-4.3c.3-2.3.8-7.1 1.1-10.7.6-6.1 2.5-23.4 7.6-68 1.2-10.8 1.9-21.1 1.6-23.1-1.1-5.5-6.2-12.6-11.4-15.9-4.2-2.7-5.6-3-12.3-3-7.2 0-8 .2-13 3.7zm97.5 174.5c-.4 2.9-1.5 12.9-2.5 22.3-1.1 9.3-2.7 24.5-3.7 33.7l-1.7 16.8H150.9l.6-6.3c.3-3.4 1.7-15.7 3-27.2 1.3-11.6 2.9-26.3 3.6-32.8l1.2-11.7H237l-.5 5.2z"/%3E%3Cpath fill="%23717c9b" d="M317.2 207c-1.8 1.1-4.1 3.4-5.2 5.2-1.9 3.1-2 5.1-2 38V285h-34.7c-33 0-35 .1-38.1 2-6.7 4.1-7.2 6-7.2 30s.5 25.9 7.2 30c3.1 1.9 5.1 2 38.1 2H310v34.7c0 33 .1 35 2 38.1 4.1 6.7 6 7.2 30 7.2s25.9-.5 30-7.2c1.9-3.1 2-5.1 2-38.1V349h34.8c32.9 0 34.9-.1 38-2 6.7-4.1 7.2-6 7.2-30s-.5-25.9-7.2-30c-3.1-1.9-5.1-2-38-2H374v-34.8c0-32.9-.1-34.9-2-38-4.1-6.7-6-7.2-30-7.2-19.7 0-21.8.2-24.8 2z"/%3E%3Cpath fill="%23717c9b" d="M217.2 359.7c-5 43.2-5.5 50-4.2 54.7 1.5 5.4 7.5 12.7 12.4 15 5.2 2.4 17.1 2.2 21.6-.5 8.9-5.3 12.3-11.7 13.4-25.4.9-10.2 3.5-33.2 4.2-36.6l.5-2.7-15.3-.4c-10.1-.2-16.1-.8-17.8-1.7-1.4-.7-5-3.8-8.1-6.8l-5.6-5.4-1.1 9.8z"/%3E%3C/svg%3E');
@@ -162,6 +173,7 @@ body.theme-contrast.layout-multiple-columns {
   --icon-heart: url("data:image/svg+xml, %0A%3Csvg viewBox='0 0 24 24' color='inherit' width='20' height='20' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='%23b8b3c0' d='M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2zm-3.566 15.604a26.953 26.953 0 0 0 2.42-1.701C18.335 14.533 20 11.943 20 9c0-2.36-1.537-4-3.5-4c-1.076 0-2.24.57-3.086 1.414L12 7.828l-1.414-1.414C9.74 5.57 8.576 5 7.5 5C5.56 5 4 6.656 4 9c0 2.944 1.666 5.533 4.645 7.903c.745.592 1.54 1.145 2.421 1.7c.299.189.595.37.934.572c.339-.202.635-.383.934-.571z'/%3E%3C/svg%3E");
   --icon-home-notification: url('data:image/svg+xml, %0A%3Csvg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"%3E%3Ctitle%3EHome%3C/title%3E%3Cpath d="M80 212v236a16 16 0 0016 16h96V328a24 24 0 0124-24h80a24 24 0 0124 24v136h96a16 16 0 0016-16V212" fill="none" stroke="%23b8b3c0" stroke-linecap="round" stroke-linejoin="round" stroke-width="38"/%3E%3Cpath d="M480 256L266.89 52c-5-5.28-16.69-5.34-21.78 0L32 256M400 179V64h-48v69" fill="none" stroke="%23b8b3c0" stroke-linecap="round" stroke-linejoin="round" stroke-width="38"/%3E%3C/svg%3E');
   --icon-star: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="%23b8b3c0" stroke-width="5.5" viewBox="0 0 68 68"%3E%3Cpath d="M31.4 3.8c-.7.4-2.5 5-4.1 10.2l-2.9 9.5-9.9.5c-5.5.3-10.6.9-11.3 1.3-.6.5-1.2 1.9-1.2 3.3 0 2 1.5 3.4 8 7.5 4.4 2.8 8 5.5 8 6s-1.3 4.5-3 9.1c-3.6 9.7-3.7 11.4-.9 12.8 2.7 1.5 3.5 1.1 12.4-5.6l7.5-5.6 8.2 6.1c8.4 6.3 11.2 7.1 13.2 3.9.8-1.4.3-3.9-2.2-11-1.8-5.1-3.2-9.6-3.2-9.9 0-.4 3.6-3 8-5.8 6.5-4.1 8-5.5 8-7.5 0-1.4-.6-2.8-1.2-3.3-.7-.4-5.8-1-11.3-1.3l-9.9-.5-2.9-9.5C37.8 4.6 36.9 3 34 3c-.8 0-2 .4-2.6.8z"/%3E%3C/svg%3E%0A');
+  --icon-bookmark: url('data:image/svg+xml, %0A%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23b8b3c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark"%3E%3Cpath d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"%3E%3C/path%3E%3C/svg%3E');
 }
 
 /* Light theme */
@@ -301,10 +313,24 @@ body.layout-multiple-columns {
   color: var(--color-fg);
 }
 
+/* Link color variants */
+.layout-multiple-columns .status-link.hashtag {
+  color: var(--color-hashtag);
+}
+
+.layout-multiple-columns .status-link.mention:not(.hashtag) {
+  color: var(--color-mention);
+}
+
+/* stylelint-disable-next-line */
+.layout-multiple-columns .status-link.mention:not(.hashtag):not(.mention) {
+  color: var(--color-link);
+}
+
 /* Logo */
 .layout-multiple-columns .ui__header__logo,
 .layout-multiple-columns .column-link.column-link--logo {
-  background-image: url('data:image/svg+xml, %3Csvg class="mastodon-logo" xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 216.4144 232.00976"%3E%3Cdefs xmlns="http://www.w3.org/2000/svg"%3E%3ClinearGradient xmlns="http://www.w3.org/2000/svg" id="gradient" x2="0%25" y2="100%25" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0%25" stop-color="%23595aff"%3E%3C/stop%3E%3Cstop offset="100%25" stop-color="%23595aff"%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath xmlns="http://www.w3.org/2000/svg" d="M211.80734 139.0875c-3.18125 16.36625-28.4925 34.2775-57.5625 37.74875-15.15875 1.80875-30.08375 3.47125-45.99875 2.74125-26.0275-1.1925-46.565-6.2125-46.565-6.2125 0 2.53375.15625 4.94625.46875 7.2025 3.38375 25.68625 25.47 27.225 46.39125 27.9425 21.11625.7225 39.91875-5.20625 39.91875-5.20625l.8675 19.09s-14.77 7.93125-41.08125 9.39c-14.50875.7975-32.52375-.365-53.50625-5.91875C9.23234 213.82 1.40609 165.31125.20859 116.09125c-.365-14.61375-.14-28.39375-.14-39.91875 0-50.33 32.97625-65.0825 32.97625-65.0825C49.67234 3.45375 78.20359.2425 107.86484 0h.72875c29.66125.2425 58.21125 3.45375 74.8375 11.09 0 0 32.975 14.7525 32.975 65.0825 0 0 .41375 37.13375-4.59875 62.915" fill="url(%23gradient)"%3E%3C/path%3E%3Cpath d="M177.50984 80.077v60.94125h-24.14375v-59.15c0-12.46875-5.24625-18.7975-15.74-18.7975-11.6025 0-17.4175 7.5075-17.4175 22.3525v32.37625H96.20734V85.42325c0-14.845-5.81625-22.3525-17.41875-22.3525-10.49375 0-15.74 6.32875-15.74 18.7975v59.15H38.90484V80.077c0-12.455 3.17125-22.3525 9.54125-29.675 6.56875-7.3225 15.17125-11.07625 25.85-11.07625 12.355 0 21.71125 4.74875 27.8975 14.2475l6.01375 10.08125 6.015-10.08125c6.185-9.49875 15.54125-14.2475 27.8975-14.2475 10.6775 0 19.28 3.75375 25.85 11.07625 6.36875 7.3225 9.54 17.22 9.54 29.675" fill="%23fff"%3E%3C/path%3E%3C/svg%3E');
+  background-image: var(--logo);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 32px auto;
@@ -313,16 +339,51 @@ body.layout-multiple-columns {
   width: 50px;
 }
 
+.layout-multiple-columns .ui__header__logo img,
 .layout-multiple-columns .ui__header__logo svg {
   display: none;
 }
 
-/* Things that should have default font-size */
+/* Things that should have the default font-size */
+.layout-multiple-columns .notification__message,
+.layout-multiple-columns .account__header__tabs__name h1 small,
+.layout-multiple-columns .button,
+.layout-multiple-columns .status__content__read-more-button,
+.layout-multiple-columns .status__prepend,
+.layout-multiple-columns .status__info,
+.layout-multiple-columns .status__relative-time,
+.layout-multiple-columns .status__info .status__display-name,
 .layout-multiple-columns .account__section-headline a,
 .layout-multiple-columns .account__section-headline button,
 .layout-multiple-columns .notification__filter-bar a,
 .layout-multiple-columns .notification__filter-bar button {
   font-size: var(--font-size);
+}
+
+/* Things that should have the mid font-size */
+.layout-multiple-columns .account__header__extra__links,
+.layout-multiple-columns .columns-area__panels__pane--compositional .account__header__account-note textarea,
+.layout-multiple-columns .account__header__content,
+.layout-multiple-columns .columns-area__panels__pane--compositional .compose-form .autosuggest-textarea__textarea,
+.layout-multiple-columns .columns-area__panels__pane--compositional .compose-form .spoiler-input__input {
+  font-size: var(--font-size-mid);
+  line-height: var(--line-height-mid);
+}
+
+/* Exceptions */
+.layout-multiple-columns .account__header__content {
+  line-height: 18px;
+}
+
+/* Things that will have even smaller font size */
+.layout-multiple-columns .account__header__account-note label {
+  font-size: var(--font-size-12);
+}
+
+/* Line heights */
+.layout-multiple-columns .reply-indicator__content,
+.layout-multiple-columns .status__content {
+  line-height: var(--line-height);
 }
 
 /* Modal overlay */
@@ -351,35 +412,6 @@ body.layout-multiple-columns {
 .layout-multiple-columns .report-dialog-modal .poll__option.dialog-option > .poll__option__text {
   display: grid;
   gap: 6px;
-}
-
-/* Modal buttons */
-.layout-multiple-columns .media-modal__navigation button,
-.layout-multiple-columns .image-loader button {
-  align-items: center;
-  border-radius: 50%;
-  /* It's inlined so we have to use !important */
-  /* stylelint-disable-next-line */
-  color: var(--color-light-text) !important;
-  display: inline-flex;
-
-  /* It's inlined so we have to use !important */
-  /* stylelint-disable-next-line */
-  font-size: var(--font-size-heading) !important;
-  /* stylelint-disable-next-line */
-  height: 36px !important;
-  justify-content: center;
-  /* stylelint-disable-next-line */
-  margin: 4px !important;
-  /* stylelint-disable-next-line */
-  top: 2px !important;
-  /* stylelint-disable-next-line */
-  width: 36px !important;
-}
-
-.layout-multiple-columns .media-modal__navigation button {
-  /* stylelint-disable-next-line */
-  top: 5px !important;
 }
 
 .layout-multiple-columns .media-modal__navigation .fa-times::before {
@@ -447,35 +479,42 @@ body.layout-multiple-columns {
   top: -2px;
 }
 
-/* Default to full-width images in link previews
-   Needs implementation from the source below
-
-   @source https://github.com/mastodon/mastodon/issues/21874#issuecomment-1332556018
-*/
-
-.layout-multiple-columns a.status-card,
-.layout-multiple-columns a.status-card.compact {
+/* Bigger preview cards */
+.layout-multiple-columns .status-card,
+.layout-multiple-columns .status-card.compact {
   background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   display: block;
+  transition: all 200ms;
+}
+
+/* Hide empty YouTube description */
+.layout-multiple-columns .status-card__description:empty {
+  display: none;
+}
+
+.layout-multiple-columns .status-card:focus,
+.layout-multiple-columns .status-card:hover {
+  background-color: rgba(255 255 255 / .03);
 }
 
 .layout-multiple-columns .fa-file-text::before {
   content: "";
 }
 
-.layout-multiple-columns a.status-card .status-card__image-image,
-.layout-multiple-columns a.status-card .status-card__image-image.compact {
+.layout-multiple-columns .status-card .status-card__image-image,
+.layout-multiple-columns .status-card .status-card__image-image.compact {
   border-radius: 0;
 }
 
-.layout-multiple-columns a.status-card .status-card__content,
-.layout-multiple-columns a.status-card.compact .status-card__content {
+.layout-multiple-columns .status-card .status-card__content,
+.layout-multiple-columns .status-card.compact .status-card__content {
   padding: 15px;
 }
 
-.layout-multiple-columns a.status-card .status-card__title,
-.layout-multiple-columns a.status-card.compact .status-card__title {
+.layout-multiple-columns .status-card .status-card__title,
+.layout-multiple-columns .status-card.compact .status-card__title {
   color: var(--color-fg);
   font-size: 18px;
   font-weight: 400;
@@ -484,10 +523,10 @@ body.layout-multiple-columns {
   white-space: inherit;
 }
 
-a.status-card .status-card__host,
-a.status-card.compact .status-card__host {
+.layout-multiple-columns .status-card .status-card__host,
+.layout-multiple-columns .status-card.compact .status-card__host {
   color: var(--color-dim);
-  font-size: 14px;
+  font-size: var(--font-size-mid);
   margin-bottom: 5px;
   margin-top: 0;
 }
@@ -745,7 +784,7 @@ body.embed .status__content a,
 .layout-multiple-columns .language-dropdown__dropdown__results__item.active,
 .layout-multiple-columns .icon-with-badge__badge,
 .layout-multiple-columns .button {
-  background-color: var(--color-accent);
+  background-color: var(--color-accent-dark);
 }
 
 .layout-multiple-columns .block-modal__cancel-button,
@@ -782,11 +821,17 @@ body.embed .status__content a,
   stroke: var(--color-accent) !important;
 }
 
-/* Mud background colors */
-.layout-multiple-columns .language-dropdown__dropdown__results__item:hover,
-.layout-multiple-columns .language-dropdown__dropdown__results__item:focus,
+/* Mud background colors, reply-indicator */
 .layout-multiple-columns .reply-indicator {
   background-color: var(--color-mud);
+  color: var(--color-light-text);
+  max-height: 20vh;
+}
+
+/* Dropdown hovers */
+.layout-multiple-columns .language-dropdown__dropdown__results__item:hover,
+.layout-multiple-columns .language-dropdown__dropdown__results__item:focus {
+  background-color: var(--color-accent-dark-50);
   color: var(--color-light-text);
 }
 
@@ -795,6 +840,58 @@ body.embed .status__content a,
 .layout-multiple-columns .status__wrapper.unread::before {
   border-color: var(--color-accent);
   display: none;
+}
+
+/* Filtered post */
+.layout-multiple-columns .status__wrapper.status__wrapper--filtered {
+  align-items: center;
+  background-color: var(--color-focusable-toot);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  color: var(--color-light-purple);
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: var(--font-size-mid);
+  justify-content: space-between;
+  margin: var(--gap-default);
+  overflow: hidden;
+  padding: 4px 16px;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: calc(100% - calc(var(--gap-default) * 2));
+}
+
+.layout-multiple-columns .notification:has(.status__wrapper--filtered) .notification__message {
+  display: none;
+}
+
+/* Fix hover/focus on article that has filtered banner */
+.layout-multiple-columns article:has(.status__wrapper--filtered):hover {
+  background-color: transparent;
+}
+
+.layout-multiple-columns .status__wrapper.status__wrapper--filtered button {
+  background-color: rgb(255 255 255 / 0);
+  border-bottom-left-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  color: var(--color-fg);
+  font-weight: 500;
+  margin-left: auto;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  transition: 200ms background;
+  white-space: nowrap;
+}
+
+.layout-multiple-columns .status__wrapper.status__wrapper--filtered button:focus,
+.layout-multiple-columns .status__wrapper.status__wrapper--filtered button:hover {
+  background-color: rgb(255 255 255 / .1);
+  text-decoration: none;
 }
 
 /* Unread message */
@@ -810,6 +907,16 @@ body.embed .status__content a,
 }
 
 /* Things like notification status update text that should be dim */
+/* stylelint-disable-next-line selector-not-notation */
+.layout-multiple-columns .notification .status-link.mention:not(.hashtag):not(.mention),
+.layout-multiple-columns .notification .status-link.hashtag,
+.layout-multiple-columns .notification .status-link.mention:not(.hashtag),
+.layout-multiple-columns .compose-form .autosuggest-textarea__textarea::placeholder,
+.layout-multiple-columns .compose-form .icon-button,
+.layout-multiple-columns .compose-form .spoiler-input__input::placeholder,
+.layout-multiple-columns .compose-form__poll-wrapper .button.button-secondary,
+.layout-multiple-columns .language-dropdown__dropdown__results__item__common-name,
+.layout-multiple-columns .report-dialog-modal__textarea::placeholder,
 .layout-multiple-columns .poll__link,
 .layout-multiple-columns .muted .poll,
 .layout-multiple-columns .status .status__relative-time,
@@ -872,7 +979,8 @@ body.embed .status__content a,
 .layout-multiple-columns .muted .status__content,
 .layout-multiple-columns .muted .status__content a,
 .layout-multiple-columns .muted .status__content p,
-.layout-multiple-columns .muted .status__display-name strong {
+.layout-multiple-columns .muted .status__display-name strong,
+.layout-multiple-columns .privacy-dropdown__option:not(.active) .privacy-dropdown__option__content {
   color: var(--color-dim);
 }
 
@@ -930,10 +1038,13 @@ body.embed .status__content a,
 }
 
 /* Light purple things */
-.account__header__tabs__name h1 small,
+.layout-multiple-columns .announcements__pagination .icon-button:hover i,
+.layout-multiple-columns .server-banner__introduction,
+.layout-multiple-columns .account__header__tabs__name h1 small,
 .layout-multiple-columns .account .account__display-name,
 .layout-multiple-columns .column-settings__section,
-.layout-multiple-columns .setting-toggle__label {
+.layout-multiple-columns .setting-toggle__label,
+.layout-multiple-columns .server-banner__number-label {
   color: var(--color-light-purple);
 }
 
@@ -946,6 +1057,9 @@ body.embed .status__content a,
 .layout-multiple-columns .report-dialog-modal__lead,
 .layout-multiple-columns .detailed-status__display-name strong,
 .layout-multiple-columns .dismissable-banner__message,
+.layout-multiple-columns .privacy-dropdown__option.active,
+.layout-multiple-columns .privacy-dropdown__option:hover .privacy-dropdown__option__content,
+.layout-multiple-columns .privacy-dropdown__option:focus .privacy-dropdown__option__content,
 .layout-multiple-columns .privacy-dropdown__option,
 .layout-multiple-columns .privacy-dropdown__option__content strong,
 .layout-multiple-columns .status__info .display-name strong.display-name__html,
@@ -993,7 +1107,12 @@ body.embed .status__content a,
   height: calc(var(--gap-default) * 2);
   justify-content: flex-start;
   margin-bottom: 0;
-  padding-bottom: calc(var(--gap-default) / 2);
+  padding-bottom: 0;
+}
+
+/* Status action bar */
+.layout-multiple-columns .status__action-bar {
+  margin-top: 12px;
 }
 
 /* Display name */
@@ -1218,16 +1337,17 @@ body.embed .detailed-status,
   padding-left: 0;
 }
 
-/* Make sure read more button is always aligned to center vertically */
+/* Make sure read more/translate button is always aligned to center vertically and to left horizontally */
 .layout-multiple-columns .status__content__read-more-button {
   align-items: center;
   display: flex;
   justify-content: flex-start;
+  margin-inline-start: 0;
 }
 
 /* Rtl version */
 [dir="rtl"] .layout-multiple-columns .status__action-bar,
-[dir="rtl"] .layout-multiple-columns .attachment-list
+[dir="rtl"] .layout-multiple-columns .attachment-list,
 [dir="rtl"] .layout-multiple-columns .status__content__read-more-button,
 [dir="rtl"] .layout-multiple-columns .status .status__content {
   padding-left: 0;
@@ -1267,6 +1387,7 @@ body.embed .detailed-status,
 /* Detailed status update */
 .layout-multiple-columns .detailed-status .status__content {
   font-size: var(--font-size-bigger);
+  line-height: 1.4;
 }
 
 body.embed .detailed-status__meta,
@@ -1817,6 +1938,7 @@ body.embed .detailed-status__meta .detailed-status__link .fa-retweet,
   font-size: 20px;
 }
 
+.layout-multiple-columns .list-adder__lists .fa-times::before,
 .layout-multiple-columns .account__wrapper .account__relationship .icon-button.active .fa::before,
 .layout-multiple-columns .explore__search-results .account__relationship .icon-button.active .fa::before,
 .layout-multiple-columns .notification .account__relationship .icon-button.active .fa::before {
@@ -1825,6 +1947,7 @@ body.embed .detailed-status__meta .detailed-status__link .fa-retweet,
   opacity: .75;
 }
 
+.layout-multiple-columns .list-adder__lists .fa-times:hover::before,
 .layout-multiple-columns .explore__search-results .icon-button.active:hover .fa::before,
 .layout-multiple-columns .notification .account__relationship .icon-button.active:hover .fa::before {
   /* stylelint-disable-next-line */
@@ -3137,8 +3260,8 @@ body.embed .button.logo-button:hover,
 .layout-multiple-columns .video-player,
 .layout-multiple-columns .media-gallery__gifv,
 .layout-multiple-columns .media-gallery__preview {
+  border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
-  outline: 1px solid var(--color-border);
   overflow: hidden;
 }
 
@@ -3199,6 +3322,11 @@ body.embed .entry .detailed-status {
   width: unset;
 }
 
+/* Increase gap for server-banner__meta */
+.layout-multiple-columns .server-banner__meta {
+  gap: 25px;
+}
+
 /* Native Mastodon 4.1.2-nightly threaded lines */
 .layout-multiple-columns .status__line--first {
   height: calc(100% + var(--size-avatar));
@@ -3253,11 +3381,11 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
 }
 
 /* Scrollbars */
+.layout-multiple-columns .drawer__inner::-webkit-scrollbar,
 .layout-multiple-columns textarea::-webkit-scrollbar,
 .layout-multiple-columns .autosuggest-textarea__textarea::-webkit-scrollbar,
 .layout-multiple-columns .reply-indicator::-webkit-scrollbar,
-.layout-multiple-columns::-webkit-scrollbar,
-.layout-multiple-columns .scrollable::-webkit-scrollbar {
+.layout-multiple-columns::-webkit-scrollbar {
   height: 6px;
   width: 6px;
 }
@@ -3265,8 +3393,7 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
 .layout-multiple-columns textarea::-webkit-scrollbar-thumb,
 .layout-multiple-columns .autosuggest-textarea__textarea::-webkit-scrollbar-thumb,
 .layout-multiple-columns .reply-indicator::-webkit-scrollbar-thumb,
-.layout-multiple-columns::-webkit-scrollbar-thumb,
-.layout-multiple-columns .scrollable::-webkit-scrollbar-thumb {
+.layout-multiple-columns::-webkit-scrollbar-thumb {
   background-color: var(--color-border);
   border: 0px solid var(--color-border);
   border-radius: 50px;
@@ -3275,24 +3402,21 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
 .layout-multiple-columns textarea::-webkit-scrollbar-thumb:hover,
 .layout-multiple-columns .autosuggest-textarea__textarea::-webkit-scrollbar-thumb:hover,
 .layout-multiple-columns .reply-indicator::-webkit-scrollbar-thumb:hover,
-.layout-multiple-columns::-webkit-scrollbar-thumb:hover,
-.layout-multiple-columns .scrollable:-webkit-scrollbar-thumb:hover {
+.layout-multiple-columns::-webkit-scrollbar-thumb:hover {
   background-color: var(--color-light-purple);
 }
 
 .layout-multiple-columns textarea::-webkit-scrollbar-thumb:active,
 .layout-multiple-columns .autosuggest-textarea__textarea::-webkit-scrollbar-thumb:active,
 .layout-multiple-columns .reply-indicator::-webkit-scrollbar-thumb:active,
-.layout-multiple-columns::-webkit-scrollbar-thumb:active,
-.layout-multiple-columns .scrollable::-webkit-scrollbar-thumb:active {
+.layout-multiple-columns::-webkit-scrollbar-thumb:active {
   background-color: var(--color-black-coral);
 }
 
 .layout-multiple-columns textarea::-webkit-scrollbar-track,
 .layout-multiple-columns .autosuggest-textarea__textarea::-webkit-scrollbar-track,
 .layout-multiple-columns .reply-indicator::-webkit-scrollbar-track,
-.layout-multiple-columns::-webkit-scrollbar-track,
-.layout-multiple-columns .scrollable::-webkit-scrollbar-track {
+.layout-multiple-columns::-webkit-scrollbar-track {
   background-color: var(--color-bg);
   border: 0px solid var(--color-border);
   border-radius: 0;
@@ -3301,25 +3425,49 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
 .layout-multiple-columns textarea::-webkit-scrollbar-track:hover,
 .layout-multiple-columns .autosuggest-textarea__textarea::-webkit-scrollbar-track:hover,
 .layout-multiple-columns .reply-indicator::-webkit-scrollbar-track:hover,
-.layout-multiple-columns::-webkit-scrollbar-track:hover,
-.layout-multiple-columns .scrollable::-webkit-scrollbar-track:hover {
+.layout-multiple-columns::-webkit-scrollbar-track:hover {
   background-color: var(--color-bg);
 }
 
 .layout-multiple-columns textarea::-webkit-scrollbar-track:active,
 .layout-multiple-columns .autosuggest-textarea__textarea::-webkit-scrollbar-track:active,
 .layout-multiple-columns .reply-indicator::-webkit-scrollbar-track:active,
-.layout-multiple-columns::-webkit-scrollbar-track:active,
-.layout-multiple-columns .scrollable::-webkit-scrollbar-track:active {
+.layout-multiple-columns::-webkit-scrollbar-track:active {
   background-color: var(--color-bg);
 }
 
+.layout-multiple-columns .drawer__inner::-webkit-scrollbar-corner,
 .layout-multiple-columns textarea::-webkit-scrollbar-corner,
 .layout-multiple-columns .autosuggest-textarea__textarea::-webkit-scrollbar-corner,
 .layout-multiple-columns .reply-indicator::-webkit-scrollbar-corner,
-.layout-multiple-columns::-webkit-scrollbar-corner,
-.layout-multiple-columns .scrollable::-webkit-scrollbar-corner {
+.layout-multiple-columns::-webkit-scrollbar-corner {
   background-color: transparent;
+}
+
+/* Drawer scollbars */
+.layout-multiple-columns .drawer__inner::-webkit-scrollbar-thumb {
+  background-color: var(--color-dim);
+  border: 0;
+  border-radius: 50px;
+}
+
+.layout-multiple-columns .drawer__inner::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-light-purple);
+}
+
+.layout-multiple-columns .drawer__inner::-webkit-scrollbar-thumb:active {
+  background-color: var(--color-light-text);
+}
+
+.layout-multiple-columns .drawer__inner::-webkit-scrollbar-track {
+  background-color: var(--color-dark);
+  border: 0;
+  border-radius: 0;
+}
+
+.layout-multiple-columns .drawer__inner::-webkit-scrollbar-track:hover,
+.layout-multiple-columns .drawer__inner::-webkit-scrollbar-track:active {
+  background-color: var(--color-dark);
 }
 
 /*
@@ -3615,6 +3763,17 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
 .layout-multiple-columns .detailed-status button.icon-button:focus .fa-star::before,
 .layout-multiple-columns .status button.icon-button:hover .fa-star::before {
   color: var(--color-dim);
+}
+
+/* Fix focus for mouse users on v4.1.4-nighly-20230721 */
+.layout-multiple-columns button:focus,
+.layout-multiple-columns .icon-button:focus {
+  outline: 0;
+}
+
+.layout-multiple-columns button:focus-visible,
+.layout-multiple-columns .icon-button:focus-visible {
+  outline: 2px solid var(--color-accent);
 }
 
 /* Mobile devices */
